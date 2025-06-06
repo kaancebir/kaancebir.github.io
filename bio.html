@@ -1,12 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bio - Kaan Cebir</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #4a90e2;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px 30px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #444;
+      text-align: justify;
+    }
+
+    a.cv-link {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #4a90e2;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-  <h1>This is the Bio page.</h1>
-  <p>More content will be added soon.</p>
+
+  <header>
+    <div class="logo">Kaan Cebir</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="bio.html">Bio</a>
+      <a href="research.html">Research</a>
+      <a href="projects.html">Projects</a>
+      <a href="notes.html">Notes</a>
+      <a href="interests.html">Personal Interests</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I am Kaan Cebir, a junior mechanical engineering student at Izmir Katip Celebi University in Türkiye.
+      My academic path is driven by a strong passion for scientific research and engineering innovation,
+      particularly in the fields of aerospace technologies and turbomachinery. I strive to be more than just
+      a manufacturing engineer—I aim to be a researcher and problem-solver who understands both science
+      and application.
+    </p>
+
+    <p>
+      I have participated in engineering projects since my first year. I was part of the Formula Student R&D Team, where I focused on chassis design methodologies. I interned at Janoschka Aegean Cylinder Industry and contributed to the modernization of a copper stripping machine. I also collaborated with an M.Sc. student on CFD simulations of a hydrodynamic journal bearing and currently work with Assoc. Prof. Sercan Acarer on turbine blade cooling research.
+    </p>
+
+    <p>
+      My skills include ANSYS Fluent, MATLAB, Autodesk Inventor, and Python-based symbolic regression. I also received specialized training at TEI Aviation Engine School, where I gained a comprehensive understanding of gas turbine technologies and manufacturing processes.
+    </p>
+
+    <a href="Kaan Cebir.pdf" class="cv-link" target="_blank">Download My CV</a>
+  </section>
+
+  <footer>
+    © 2025 Kaan Cebir
+  </footer>
+
 </body>
 </html>
-
