@@ -15,74 +15,95 @@
       background-color: white;
     }
 
-header {
-  background-color: white;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 30px;
-  border-bottom: 1px solid #eee;
-}
-
-/* Bio başlığı (daha büyük ve öne çıkan) */
-.logo {
-  font-size: 22px;  /* Bio'yu biraz daha büyük yaptım */
-  font-weight: bold;
-  margin: 0 20px;
-  letter-spacing: 0.5px; /* Okunabilirlik için boşluk */
-}
-
-nav {
-  display: flex;
-  gap: 30px;
-  align-items: center; /* Başlıkları dikeyde ortalar */
-}
-
-/* Projects ve Notes için ortak stil */
-nav a {
-  color: #333;
-  text-decoration: none;
-  font-size: 17px;  /* Projects ve Notes için sabit boyut */
-  font-weight: bold;
-  transition: all 0.3s ease; /* Daha smooth geçiş */
-  padding: 5px 0;
-  position: relative;
-  letter-spacing: 0.3px; /* Okunabilirlik */
-}
-
-/* Aktif sayfa başlığına özel stil (opsiyonel) */
-nav a.active {
-  color: #4a90e2;
-}
-
-/* Hover efekti */
-nav a:hover {
-  color: #4a90e2;
-  transform: translateY(-2px); /* Hafif yukarı hareket */
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #4a90e2;
-  transition: width 0.3s;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px 30px;
+    header {
       background-color: white;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Tüm başlıklar eşit boyutta */
+    .logo, nav a {
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      padding: 5px 0;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #4a90e2;
+      transform: translateY(-2px);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #4a90e2;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .content-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 40px auto;
+      gap: 40px;
+    }
+
+    .text-section {
+      flex: 2;
+      padding: 20px;
+    }
+
+    .image-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .profile-image {
+      width: 100%;
+      max-width: 300px;
       border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .social-link {
+      color: #4a90e2;
+      text-decoration: underline;
+      font-weight: bold;
+      margin: 10px 0;
+      cursor: pointer;
+      display: block;
+    }
+
+    .social-link:hover {
+      opacity: 0.8;
     }
 
     h2 {
@@ -96,25 +117,14 @@ nav a:hover::after {
       text-align: justify;
     }
 
-    .cv-link {
-      color: #4a90e2;
-      text-decoration: underline;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .cv-link:hover {
-      opacity: 0.8;
-    }
-
-    .external-link {
+    .cv-link, .external-link {
       color: #4a90e2;
       text-decoration: underline;
       font-weight: bold;
       cursor: pointer;
     }
 
-    .external-link:hover {
+    .cv-link:hover, .external-link:hover {
       opacity: 0.8;
     }
 
@@ -137,20 +147,33 @@ nav a:hover::after {
     </nav>
   </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      My name is Kaan. I am a senior Mechanical Engineering student at Katip Çelebi University. I have a passion for scientific research and engineering, particularly in the field of aerospace technologies. I aim to become a researcher and problem-solver who understands both science and its practical applications.
-    </p>
+  <div class="content-container">
+    <div class="text-section">
+      <h2>About Me</h2>
+      <p>
+        My name is Kaan. I am a senior Mechanical Engineering student at Katip Çelebi University. I have a passion for scientific research and engineering, particularly in the field of aerospace technologies. I aim to become a researcher and problem-solver who understands both science and its practical applications.
+      </p>
 
-    <p>
-      During my academic journey, I have worked on CFD simulations of a hydrodynamic journal bearing and on the film cooling of turbine blades. I am currently working remotely with <span class="external-link" onclick="window.open('https://lab.tarsus.edu.tr/yanma/tr/page/arastirma-konulari/6810', '_blank')">CORET</span> (Combustion Research Team) from Tarsus University, I will begin a voluntary research internship at  <span class="external-link" onclick="window.open('https://odtugunam.org/tr/odak/', '_blank')">ODTÜ-GÜNAM</span> (Center for Solar Energy Research and Applications) on August 25.. If you want to learn more about my work, you can check the "Projects" section. Also here is my <span class="cv-link" onclick="window.open('Kaan Cebir.pdf', '_blank')">CV</span>.
-    </p>
+      <p>
+        During my academic journey, I have worked on CFD simulations of a hydrodynamic journal bearing and on the film cooling of turbine blades. I am currently working remotely with <span class="external-link" onclick="window.open('https://lab.tarsus.edu.tr/yanma/tr/page/arastirma-konulari/6810', '_blank')">CORET</span> (Combustion Research Team) from Tarsus University, I will begin a voluntary research internship at <span class="external-link" onclick="window.open('https://odtugunam.org/tr/odak/', '_blank')">ODTÜ-GÜNAM</span> (Center for Solar Energy Research and Applications) on August 25. If you want to learn more about my work, you can check the "Projects" section. Also here is my <span class="cv-link" onclick="window.open('Kaan Cebir.pdf', '_blank')">CV</span>.
+      </p>
 
-    <p>
-      My goal is to be someone who understands physics, mathematics, and the fundamentals of engineering—someone who views the world like a scientist. I also enjoy doing calisthenics and reading. I might post a few of my writings as well.
-    </p>
-  </section>
+      <p>
+        My goal is to be someone who understands physics, mathematics, and the fundamentals of engineering—someone who views the world like a scientist. I also enjoy doing calisthenics and reading. I might post a few of my writings as well.
+      </p>
+    </div>
+
+    <div class="image-section">
+      <!-- Buraya resminizi ekleyin -->
+      <img src="your-profile-image.jpg" alt="Kaan Cebir" class="profile-image">
+      
+      <span class="social-link" onclick="window.open('https://www.linkedin.com/in/kaan-cebir-8057bb259/', '_blank')">LinkedIn</span>
+      
+      <span class="social-link" onclick="window.open('https://www.youtube.com/@kaancebir5471', '_blank')">YouTube: Kaan Cebir</span>
+      
+      <span class="social-link" onclick="window.location.href='mailto:kaancebir06@gmail.com'">Email: kaancebir06@gmail.com</span>
+    </div>
+  </div>
 
   <footer>
     © 2025 Kaan Cebir
