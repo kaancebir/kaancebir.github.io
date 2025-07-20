@@ -15,7 +15,7 @@
       background-color: white;
     }
 
-   header {
+header {
   background-color: white;
   color: #333;
   display: flex;
@@ -25,45 +25,57 @@
   border-bottom: 1px solid #eee;
 }
 
+/* Bio başlığı (daha büyük ve öne çıkan) */
 .logo {
-  font-size: 20px; /* Bio başlığı boyutu */
+  font-size: 22px;  /* Bio'yu biraz daha büyük yaptım */
   font-weight: bold;
   margin: 0 20px;
+  letter-spacing: 0.5px; /* Okunabilirlik için boşluk */
 }
 
 nav {
   display: flex;
   gap: 30px;
+  align-items: center; /* Başlıkları dikeyde ortalar */
 }
 
+/* Projects ve Notes için ortak stil */
 nav a {
   color: #333;
   text-decoration: none;
-  font-size: 16px; /* Projects ve Notes için sabit boyut */
+  font-size: 17px;  /* Projects ve Notes için sabit boyut */
   font-weight: bold;
-  transition: color 0.3s;
+  transition: all 0.3s ease; /* Daha smooth geçiş */
   padding: 5px 0;
   position: relative;
+  letter-spacing: 0.3px; /* Okunabilirlik */
 }
 
-    nav a:hover {
-      color: #4a90e2;
-    }
+/* Aktif sayfa başlığına özel stil (opsiyonel) */
+nav a.active {
+  color: #4a90e2;
+}
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #4a90e2;
-      transition: width 0.3s;
-    }
+/* Hover efekti */
+nav a:hover {
+  color: #4a90e2;
+  transform: translateY(-2px); /* Hafif yukarı hareket */
+}
 
-    nav a:hover::after {
-      width: 100%;
-    }
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #4a90e2;
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
 
     section {
       max-width: 900px;
