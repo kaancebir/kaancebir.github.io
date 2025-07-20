@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kaan Cebir</title>
+  <title>Bio - Kaan Cebir</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -19,9 +21,6 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 30px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     .logo {
@@ -45,11 +44,12 @@
 
     section {
       max-width: 900px;
-      margin: 40px auto;
+      margin: auto;
       padding: 20px 30px;
       background-color: white;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      flex: 1;
     }
 
     h2 {
@@ -61,6 +61,17 @@
       line-height: 1.6;
       color: #444;
       text-align: justify;
+    }
+
+    .cv-link {
+      color: #4a90e2;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cv-link:hover {
+      opacity: 0.8;
     }
 
     footer {
@@ -86,18 +97,18 @@
   </header>
 
   <section>
-    <h2>Welcome</h2>
-    <p>I hope you and your family are doing well. My name is Kaan Cebir, and I am a junior mechanical engineering student at Katip Çelebi University in Türkiye. My goal in pursuing mechanical engineering is not merely to work in a manufacturing setting, but to become an engineer who possesses a deep understanding of both science and engineering.</p>
+    <h2>About Me</h2>
+    <p>
+      My name is Kaan. I am a senior Mechanical Engineering student at Katip Çelebi University. I have a passion for scientific research and engineering, particularly in the field of aerospace technologies. I aim to become a researcher and problem-solver who understands both science and its practical applications.
+    </p>
 
-    <p>I have a strong passion for research and a desire to contribute to advanced technologies, particularly in the field of aerospace and turbomachinery. I firmly believe that this is the most meaningful way I can contribute to humanity.</p>
+    <p>
+      During my academic journey, I have worked on CFD simulations of a hydrodynamic journal bearing and on the film cooling of turbine blades. I am currently working remotely with CORET (Combustion Research Team) from Tarsus University, and I will also be a voluntary research internship at ODTÜ-GÜNAM (Center for Solar Energy Research and Applications) beginning 25 agust. If you want to learn more about my work, you can check the "Projects" section. Also here is my <span class="cv-link" onclick="window.open('Kaan Cebir.pdf', '_blank')">CV</span>.
+    </p>
 
-    <p>Throughout my academic journey, I have actively participated in various engineering and research projects. In my first year, I joined the Formula Student R&D Team, conducting structural research on chassis design methodologies. I also completed an internship at Janoschka Aegean Cylinder Industry and Trade Inc.</p>
-
-    <p>Afterwards, I collaborated with a master’s student at my university on CFD analyses of a hydrodynamic journal bearing. Currently, I am working at a startup company with Assoc. Prof. Sercan Acarer on gas turbine blade cooling systems. In this project, I performed computational analyses of the blade’s leading edge and conducted a parametric study, followed by symbolic regression to model cooling performance.</p>
-
-    <p>My research interests include turbines, computational fluid dynamics, and optimization. I am particularly interested in wind turbines and would be honored to learn more about experimental techniques and methods used in this field.</p>
-
-    <p>I hope to contribute meaningfully to a research group and gain experience in impactful scientific work. Please feel free to reach out to me if any suitable research opportunities are available.</p>
+    <p>
+      My goal is to be someone who understands physics, mathematics, and the fundamentals of engineering—someone who views the world like a scientist. I also enjoy doing calisthenics and reading. I might post a few of my writings as well.
+    </p>
   </section>
 
   <footer>
