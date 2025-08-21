@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects - Kaan Cebir</title>
+  <title>Projeler - Kaan Cebir</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
@@ -26,7 +26,6 @@
       border-bottom: 1px solid #eee;
     }
 
-    /* Tüm başlıklar eşit boyutta */
     .logo, nav a {
       font-size: 18px;
       font-weight: bold;
@@ -87,7 +86,6 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
-      /* Removed the blue left border as requested */
     }
 
     .project-card:hover {
@@ -122,12 +120,6 @@
       margin-bottom: 10px;
       color: #333;
       line-height: 1.4;
-    }
-
-    .project-desc {
-      color: #666;
-      margin-bottom: 15px;
-      line-height: 1.6;
     }
 
     .project-tags {
@@ -197,11 +189,6 @@
       margin-bottom: 15px;
     }
 
-    .modal-desc {
-      color: #666;
-      margin-bottom: 20px;
-    }
-
     footer {
       text-align: center;
       padding: 20px;
@@ -236,7 +223,6 @@
         </div>
         <div class="project-content">
           <h3 class="project-title">Development of a Symbolic Regression-Based Model for Leading Edge of Film Cooled Gas Turbine Blade</h3>
-          <p class="project-desc">Supersonic turbine design and experimental testing for ORC GHP system</p>
           <div class="project-tags">
             <span class="tag">CFD</span>
             <span class="tag">Turbines</span>
@@ -253,22 +239,16 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
       <h2 class="modal-title">Development of a Symbolic Regression-Based Model for Leading Edge of Film Cooled Gas Turbine Blade</h2>
-      <p class="modal-desc">Supersonic turbine design and experimental testing for ORC GHP system</p>
       
       <div class="presentation-container">
-        <div style="text-align: center; padding: 40px; color: #666;">
-          <i class="fas fa-file-powerpoint" style="font-size: 3rem; margin-bottom: 15px; display: block; color: #4a90e2;"></i>
-          <h3>Presentation Preview</h3>
-          <p>Your turbine presentation would be embedded here</p>
-        </div>
+        <!-- GitHub'daki sunumunuzu buraya ekleyin -->
+        <iframe 
+          src="Leading Edge Film Cooling in Gas Turbine Blades.pdf" 
+          width="100%" 
+          height="100%" 
+          style="border: none;">
+        </iframe>
       </div>
-      
-      <p><strong>How to add your presentation:</strong></p>
-      <ol>
-        <li>Upload your PowerPoint to Google Slides, OneDrive, or SlideShare</li>
-        <li>Get the embed code from the sharing options</li>
-        <li>Replace this placeholder with the embed code</li>
-      </ol>
     </div>
   </div>
 
