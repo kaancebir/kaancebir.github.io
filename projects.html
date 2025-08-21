@@ -2,11 +2,198 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Bio - Kaan Cebir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Kaan Cebir</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      color: #7f8c8d;
+      font-size: 1.2rem;
+    }
+    
+    .presentation-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 30px 0;
+    }
+    
+    .embed-container {
+      width: 100%;
+      max-width: 900px;
+      height: 500px;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .placeholder {
+      text-align: center;
+      padding: 40px;
+      color: #7f8c8d;
+    }
+    
+    .placeholder i {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      display: block;
+      color: #3498db;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+    
+    .btn-download {
+      background: #2ecc71;
+    }
+    
+    .btn-download:hover {
+      background: #27ae60;
+    }
+    
+    .instructions {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 30px 0;
+      border-left: 4px solid #3498db;
+    }
+    
+    .instructions h3 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .embed-container {
+        height: 300px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>This is the Project page.</h1>
-  <p>More content will be added soon.</p>
+  <div class="container">
+    <header>
+      <h1>Project Presentation</h1>
+      <p class="subtitle">Showcasing my work and ideas</p>
+    </header>
+    
+    <div class="presentation-container">
+      <div class="embed-container">
+        <div class="placeholder">
+          <i>📊</i>
+          <h3>Presentation Preview</h3>
+          <p>Your embedded presentation will appear here</p>
+        </div>
+        <!-- You'll replace the above placeholder with your actual presentation embed code -->
+      </div>
+      
+      <div class="action-buttons">
+        <a href="#" class="btn">View Fullscreen</a>
+        <a href="#" class="btn btn-download">Download Presentation</a>
+      </div>
+    </div>
+    
+    <div class="instructions">
+      <h3>How to Add Your PowerPoint Presentation</h3>
+      <p>To display your presentation on this webpage:</p>
+      <ol>
+        <li>Upload your PowerPoint to a service like Google Slides, Microsoft OneDrive, or SlideShare</li>
+        <li>Use their embed feature to get the iframe code</li>
+        <li>Replace the placeholder div with the embed code</li>
+        <li>Update the download button link to point to your actual presentation file</li>
+      </ol>
+      <p><strong>Example embed code (replace with yours):</strong></p>
+      <code>
+        &lt;iframe src="https://docs.google.com/presentation/d/your-presentation-id/embed" width="100%" height="100%" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+      </code>
+    </div>
+    
+    <footer>
+      <p>© 2023 Kaan Cebir | Project Portfolio</p>
+    </footer>
+  </div>
+
+  <script>
+    // Simple JavaScript for demonstration purposes
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.btn');
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          if (this.getAttribute('href') === '#') {
+            e.preventDefault();
+            alert('Please update the link to point to your actual presentation');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
-
