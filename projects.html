@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects - Kaan Cebir</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -13,7 +14,7 @@
     }
     
     body {
-      background-color: #f5f5f5;
+      background-color: #f8f9fa;
       color: #333;
       line-height: 1.6;
       padding: 20px;
@@ -46,16 +47,112 @@
       font-size: 1.2rem;
     }
     
-    .presentation-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 30px 0;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
     }
     
-    .embed-container {
+    .project-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border-left: 5px solid #3498db;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    
+    .project-img {
+      height: 200px;
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-img img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .project-content {
+      padding: 20px;
+    }
+    
+    .project-title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+      line-height: 1.4;
+    }
+    
+    .project-desc {
+      color: #7f8c8d;
+      margin-bottom: 15px;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .tag {
+      background: #e7f4ff;
+      color: #3498db;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
       max-width: 900px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #7f8c8d;
+    }
+    
+    .presentation-container {
+      width: 100%;
       height: 500px;
       margin: 20px 0;
       border: 1px solid #ddd;
@@ -68,55 +165,14 @@
       align-items: center;
     }
     
-    .placeholder {
-      text-align: center;
-      padding: 40px;
-      color: #7f8c8d;
-    }
-    
-    .placeholder i {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      display: block;
-      color: #3498db;
-    }
-    
-    .btn {
-      display: inline-block;
-      background: #3498db;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 10px;
-      transition: all 0.3s ease;
-    }
-    
-    .btn:hover {
-      background: #2980b9;
-      transform: translateY(-2px);
-    }
-    
-    .btn-download {
-      background: #2ecc71;
-    }
-    
-    .btn-download:hover {
-      background: #27ae60;
-    }
-    
-    .instructions {
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 30px 0;
-      border-left: 4px solid #3498db;
-    }
-    
-    .instructions h3 {
-      margin-bottom: 15px;
+    .modal-title {
       color: #2c3e50;
+      margin-bottom: 15px;
+    }
+    
+    .modal-desc {
+      color: #7f8c8d;
+      margin-bottom: 20px;
     }
     
     footer {
@@ -127,7 +183,11 @@
     }
     
     @media (max-width: 768px) {
-      .embed-container {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .presentation-container {
         height: 300px;
       }
       
@@ -140,60 +200,157 @@
 <body>
   <div class="container">
     <header>
-      <h1>Project Presentation</h1>
-      <p class="subtitle">Showcasing my work and ideas</p>
+      <h1>Projects</h1>
+      <p class="subtitle">Work & Research</p>
     </header>
     
-    <div class="presentation-container">
-      <div class="embed-container">
-        <div class="placeholder">
-          <i>📊</i>
-          <h3>Presentation Preview</h3>
-          <p>Your embedded presentation will appear here</p>
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card" onclick="openModal('modal1')">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1581094288338-231b058b38b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Turbine Systems">
         </div>
-        <!-- You'll replace the above placeholder with your actual presentation embed code -->
+        <div class="project-content">
+          <h3 class="project-title">Development of a Symbolic Regression-Based Model for Leading Edge of Film Cooled Gas Turbine Blade</h3>
+          <p class="project-desc">Supersonic turbine design and experimental testing for ORC GHP system</p>
+          <div class="project-tags">
+            <span class="tag">Energy</span>
+            <span class="tag">Turbines</span>
+            <span class="tag">Research</span>
+          </div>
+        </div>
       </div>
       
-      <div class="action-buttons">
-        <a href="#" class="btn">View Fullscreen</a>
-        <a href="#" class="btn btn-download">Download Presentation</a>
+      <!-- Project 2 -->
+      <div class="project-card" onclick="openModal('modal2')">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1626721105368-a3cfc33c5cff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Energy Storage">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Carnot Battery - Pumped Thermal Energy Storage</h3>
+          <p class="project-desc">Utilize cable energy storage for the high renewable penetration future energy systems</p>
+          <div class="project-tags">
+            <span class="tag">Battery</span>
+            <span class="tag">Storage</span>
+            <span class="tag">Renewable</span>
+          </div>
+        </div>
       </div>
-    </div>
-    
-    <div class="instructions">
-      <h3>How to Add Your PowerPoint Presentation</h3>
-      <p>To display your presentation on this webpage:</p>
-      <ol>
-        <li>Upload your PowerPoint to a service like Google Slides, Microsoft OneDrive, or SlideShare</li>
-        <li>Use their embed feature to get the iframe code</li>
-        <li>Replace the placeholder div with the embed code</li>
-        <li>Update the download button link to point to your actual presentation file</li>
-      </ol>
-      <p><strong>Example embed code (replace with yours):</strong></p>
-      <code>
-        &lt;iframe src="https://docs.google.com/presentation/d/your-presentation-id/embed" width="100%" height="100%" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-      </code>
+      
+      <!-- Project 3 -->
+      <div class="project-card" onclick="openModal('modal3')">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1611159063981-b8c8c4301869?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Heat Pumps">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">High Temperature Heat Pumps</h3>
+          <p class="project-desc">Electrifying industrial process heat to enable decarbonization in industry</p>
+          <div class="project-tags">
+            <span class="tag">Heat Pumps</span>
+            <span class="tag">Industrial</span>
+            <span class="tag">Decarbonization</span>
+          </div>
+        </div>
+      </div>
     </div>
     
     <footer>
       <p>© 2023 Kaan Cebir | Project Portfolio</p>
     </footer>
   </div>
+  
+  <!-- Modal 1 -->
+  <div class="modal" id="modal1">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+      <h2 class="modal-title">Development of a Symbolic Regression-Based Model for Leading Edge of Film Cooled Gas Turbine Blade</h2>
+      <p class="modal-desc">Supersonic turbine design and experimental testing for ORC GHP system</p>
+      
+      <div class="presentation-container">
+        <div style="text-align: center; padding: 40px; color: #7f8c8d;">
+          <i class="fas fa-file-powerpoint" style="font-size: 3rem; margin-bottom: 15px; display: block; color: #3498db;"></i>
+          <h3>Presentation Preview</h3>
+          <p>Your turbine presentation would be embedded here</p>
+        </div>
+      </div>
+      
+      <p><strong>How to add your presentation:</strong></p>
+      <ol>
+        <li>Upload your PowerPoint to Google Slides, OneDrive, or SlideShare</li>
+        <li>Get the embed code from the sharing options</li>
+        <li>Replace this placeholder with the embed code</li>
+      </ol>
+    </div>
+  </div>
+  
+  <!-- Modal 2 -->
+  <div class="modal" id="modal2">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
+      <h2 class="modal-title">Carnot Battery - Pumped Thermal Energy Storage</h2>
+      <p class="modal-desc">Utilize cable energy storage for the high renewable penetration future energy systems</p>
+      
+      <div class="presentation-container">
+        <div style="text-align: center; padding: 40px; color: #7f8c8d;">
+          <i class="fas fa-file-powerpoint" style="font-size: 3rem; margin-bottom: 15px; display: block; color: #3498db;"></i>
+          <h3>Presentation Preview</h3>
+          <p>Your energy storage presentation would be embedded here</p>
+        </div>
+      </div>
+      
+      <p><strong>How to add your presentation:</strong></p>
+      <ol>
+        <li>Upload your PowerPoint to Google Slides, OneDrive, or SlideShare</li>
+        <li>Get the embed code from the sharing options</li>
+        <li>Replace this placeholder with the embed code</li>
+      </ol>
+    </div>
+  </div>
+  
+  <!-- Modal 3 -->
+  <div class="modal" id="modal3">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal3')">&times;</span>
+      <h2 class="modal-title">High Temperature Heat Pumps</h2>
+      <p class="modal-desc">Electrifying industrial process heat to enable decarbonization in industry</p>
+      
+      <div class="presentation-container">
+        <div style="text-align: center; padding: 40px; color: #7f8c8d;">
+          <i class="fas fa-file-powerpoint" style="font-size: 3rem; margin-bottom: 15px; display: block; color: #3498db;"></i>
+          <h3>Presentation Preview</h3>
+          <p>Your heat pumps presentation would be embedded here</p>
+        </div>
+      </div>
+      
+      <p><strong>How to add your presentation:</strong></p>
+      <ol>
+        <li>Upload your PowerPoint to Google Slides, OneDrive, or SlideShare</li>
+        <li>Get the embed code from the sharing options</li>
+        <li>Replace this placeholder with the embed code</li>
+      </ol>
+    </div>
+  </div>
 
   <script>
-    // Simple JavaScript for demonstration purposes
-    document.addEventListener('DOMContentLoaded', function() {
-      const buttons = document.querySelectorAll('.btn');
-      
-      buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          if (this.getAttribute('href') === '#') {
-            e.preventDefault();
-            alert('Please update the link to point to your actual presentation');
-          }
-        });
+    // Modal functionality
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside of modal content
+    window.onclick = function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          closeModal(modal.id);
+        }
       });
-    });
+    }
   </script>
 </body>
 </html>
