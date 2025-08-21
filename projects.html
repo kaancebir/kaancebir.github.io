@@ -144,7 +144,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.9);
       z-index: 1000;
       justify-content: center;
       align-items: center;
@@ -152,28 +152,38 @@
 
     .modal-content {
       background: white;
-      padding: 30px;
+      padding: 20px;
       border-radius: 10px;
-      width: 90%;
-      max-width: 900px;
-      max-height: 90vh;
+      width: 95%;
+      height: 90vh;
+      max-width: none;
       overflow-y: auto;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
 
     .close-modal {
       position: absolute;
       top: 15px;
       right: 15px;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
       color: #666;
+      z-index: 1001;
+      background: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .presentation-container {
       width: 100%;
-      height: 500px;
-      margin: 20px 0;
+      height: 100%;
       border: 1px solid #ddd;
       border-radius: 8px;
       overflow: hidden;
@@ -182,11 +192,31 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-grow: 1;
     }
 
     .modal-title {
       color: #333;
       margin-bottom: 15px;
+      padding-right: 40px;
+    }
+
+    .fullscreen-btn {
+      position: absolute;
+      top: 15px;
+      right: 65px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #666;
+      z-index: 1001;
+      background: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     footer {
@@ -198,8 +228,20 @@
     }
 
     @media (max-width: 768px) {
-      .presentation-container {
-        height: 300px;
+      .modal-content {
+        width: 98%;
+        height: 85vh;
+        padding: 15px;
+      }
+      
+      .close-modal, .fullscreen-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+      }
+      
+      .fullscreen-btn {
+        right: 60px;
       }
     }
   </style>
@@ -219,7 +261,7 @@
       <!-- Single Project -->
       <div class="project-card" onclick="openModal('modal1')">
         <div class="project-img">
-          <img src="https://www.conceptsnrec.com/hubfs/Multiple%20Schemes%20for%20Film%20Cooling%20in%20Gas%20Turbines.png" alt="Turbine Blade Research">
+          <img src="https://www.mdpi.com/processes/processes-13-01424/article_deploy/html/images/processes-13-01424-g004.png" alt="Turbine Blade Research">
         </div>
         <div class="project-content">
           <h3 class="project-title">Development of a Symbolic Regression-Based Model for Leading Edge of Film Cooled Gas Turbine Blade</h3>
@@ -232,6 +274,7 @@
   <div class="modal" id="modal1">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+      <span class="fullscreen-btn" onclick="toggleFullScreen()"><i class="fas fa-expand"></i></span>
       <h2 class="modal-title">Development of a Symbolic Regression-Based Model for Leading Edge of Film Cooled Gas Turbine Blade</h2>
       
       <div class="presentation-container">
@@ -260,6 +303,7 @@
     function closeModal(modalId) {
       document.getElementById(modalId).style.display = 'none';
       document.body.style.overflow = 'auto';
+      exitFullScreen();
     }
     
     // Close modal when clicking outside of modal content
@@ -269,6 +313,46 @@
           closeModal(modal.id);
         }
       });
+    }
+    
+    // Full screen functionality
+    function toggleFullScreen() {
+      const modalContent = document.querySelector('.modal-content');
+      if (!document.fullscreenElement) {
+        if (modalContent.requestFullscreen) {
+          modalContent.requestFullscreen();
+        } else if (modalContent.webkitRequestFullscreen) {
+          modalContent.webkitRequestFullscreen();
+        } else if (modalContent.msRequestFullscreen) {
+          modalContent.msRequestFullscreen();
+        }
+      } else {
+        exitFullScreen();
+      }
+    }
+    
+    function exitFullScreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+    
+    // Listen for fullscreen change events to update button icon
+    document.addEventListener('fullscreenchange', updateFullscreenButton);
+    document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+    document.addEventListener('msfullscreenchange', updateFullscreenButton);
+    
+    function updateFullscreenButton() {
+      const fullscreenBtn = document.querySelector('.fullscreen-btn');
+      if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+        fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+      } else {
+        fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+      }
     }
   </script>
 </body>
